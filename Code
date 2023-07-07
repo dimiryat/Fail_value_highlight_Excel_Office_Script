@@ -1,0 +1,27 @@
+function main(workbook: ExcelScript.Workbook) {
+	let sheet = workbook.getActiveWorksheet();
+	let range = sheet.getRange("I6:JZ89");
+	let values = range.getValues();
+	let headerRow3 = sheet.getRange("I3:JZ3").getValues()[0];
+	let headerRow4 = sheet.getRange("I4:JZ4").getValues()[0];
+
+	for (let i = 0; i < values.length; i++) {
+		for (let j = 0; j < values[i].length; j++) {
+			let cellValue = values[i][j];
+			let headerValueRow3 = headerRow3[j];
+			let headerValueRow4 = headerRow4[j];
+			let cell = sheet.getCell(i + 5, j + 8);	//Due to first cell is I6. 
+
+			if (cellValue !== null && cellValue !== "") {
+				if (headerValueRow3 != null && headerValueRow3 !="")
+					if (cellValue < headerValueRow3) {
+						cell.getFormat().getFill().setColor("FFFF00"); // Set background to yellow
+				}
+				if (headerValueRow4 != null && headerValueRow4 != "")
+					if (cellValue > headerValueRow4) {
+						cell.getFormat().getFill().setColor("FFFF00"); // Set background to yellow
+				}
+			}
+		}
+	}
+}
