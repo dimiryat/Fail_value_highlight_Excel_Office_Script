@@ -11,6 +11,13 @@ function main(workbook: ExcelScript.Workbook) {
 			let headerValueRow3 = headerRow3[j];
 			let headerValueRow4 = headerRow4[j];
 			let cell = sheet.getCell(i + 5, j + 8);	//Due to first cell is I6. 
+			
+			//1 = i + 0
+			//2 = i + 1
+			//6 = i + 5
+			//A = j + 0
+			//B = j + 1
+			//I = j + 8
 
 			if (cellValue !== null && cellValue !== "") {
 				if (headerValueRow3 != null && headerValueRow3 !="")
